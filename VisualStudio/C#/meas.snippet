@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>meas</Title>
+      <Shortcut>meas</Shortcut>
+      <Description>Code snippet for measure code execution time</Description>
+      <Author>Ing. Jan Kužel</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="false">
+          <ID>SystemDiagnosticsStopwatch</ID>
+          <Function>SimpleTypeName(global::System.Diagnostics.Stopwatch)</Function>
+        </Literal>
+        <Literal Editable="false">
+          <ID>SystemDiagnosticsTrace</ID>
+          <Function>SimpleTypeName(global::System.Diagnostics.Trace)</Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+        <![CDATA[
+          $SystemDiagnosticsTrace$.WriteLine($$"> {nameof()}");
+          $SystemDiagnosticsStopwatch$ sw = $SystemDiagnosticsStopwatch$.StartNew();
+          $end$
+          sw.Stop();
+          $SystemDiagnosticsTrace$.WriteLine($$"\t{sw.ElapsedMilliseconds}ms elapsed");
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
